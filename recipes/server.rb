@@ -2,11 +2,9 @@ package 'httpd' do
  action :install
 end
 
-file '/var/www/html/index.html' do
- content "Information gathered from OHAI
- HOSTNAME: #{node['hostname']}
- IPADDRESS: #{node['ipaddress']} 
-"
+template '/var/www/html/index.html' do
+ source 'index.html.erb'
+ action :create
 end
 
 service 'httpd' do
