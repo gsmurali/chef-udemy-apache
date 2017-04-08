@@ -3,7 +3,10 @@ package 'httpd' do
 end
 
 file '/var/www/html/index.html' do
- content 'Hello World'
+ content "Information gathered from OHAI
+ HOSTNAME: #{node['hostname']}
+ IPADDRESS: #{node['ipaddress']} 
+"
 end
 
 service 'httpd' do
